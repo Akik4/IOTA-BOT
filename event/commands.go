@@ -23,16 +23,10 @@ var (
 			options := i.ApplicationCommandData().Options
 			if len(options) > 0 {
 				optionMap := make(map[string]*discordgo.ApplicationCommandInteractionDataOption, len(options))
-				for _, opt := range options {
-					optionMap[opt.Name] = opt
-				}
 
 				if option, ok := optionMap["user"]; ok {
-					println(option.UserValue(nil).ID)
-					println(s.User(option.UserValue(nil).ID))
 					var users *discordgo.User
 					var err error
-
 					users, err = s.User(option.UserValue(nil).ID)
 					if err != nil {
 						println("erreur :", err)

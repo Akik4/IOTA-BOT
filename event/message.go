@@ -18,10 +18,14 @@ func listener(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 
 	if strings.Split(m.Content, " ")[0] == "!avatar" {
-		if len(m.Mentions) > 0 {
-			ressources.Avatar(s, m, m.Mentions[0])
+		if strings.Split(m.Content, " ")[1] == m.Mentions[0].Mention() {
+			if len(m.Mentions) > 0 {
+				ressources.Avatar(s, m, m.Mentions[0])
+			} else {
+				ressources.Avatar(s, m, m.Author)
+			}
 		} else {
-			ressources.Avatar(s, m, m.Author)
+			s.ChannelMessageSend(m.ChannelID, "You can't put text as first argument\nexpected : !avatar <@user>")
 		}
 	}
 }
