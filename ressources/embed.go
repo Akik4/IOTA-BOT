@@ -19,6 +19,7 @@ func Avatar(s *discordgo.Session, msg *discordgo.MessageCreate, user *discordgo.
 				Title:  user.Username + "'s avatar",
 				Image:  img[0],
 				Footer: footer[0],
+				Color:  15418782,
 			},
 		}
 	)
