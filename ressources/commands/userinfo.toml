@@ -1,0 +1,8 @@
+name = "userinfo"
+description = "Show user informations"
+[settings]
+    load = true
+    type = ["user"]
+    name = ["user"]
+    description = ["User"]
+    required = ["false"]

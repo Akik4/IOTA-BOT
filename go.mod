@@ -2,7 +2,10 @@ module akika.fr/discord
 
 go 1.20
 
-require github.com/bwmarrin/discordgo v0.27.1
+require (
+	github.com/BurntSushi/toml v1.2.1
+	github.com/bwmarrin/discordgo v0.27.1
+)
 
 require (
 	github.com/gorilla/websocket v1.4.2 // indirect

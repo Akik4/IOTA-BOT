@@ -1,0 +1,8 @@
+name = "avatar"
+description = "Bernard tapis"
+[settings]
+    load = true
+    type = ["user"]
+    name = ["user"]
+    description = ["User"]
+    required = ["false"]

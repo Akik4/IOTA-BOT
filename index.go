@@ -5,6 +5,7 @@ import (
 	"os/signal"
 	"syscall"
 
+	"akika.fr/discord/commands"
 	"akika.fr/discord/event"
 	"github.com/bwmarrin/discordgo"
 )
@@ -20,12 +21,15 @@ func main() {
 		println("erreur :", err)
 	}
 	event.Message(discord)
-	event.Commands(discord)
+	println("Bot started")
+
+	commands.Init(discord)
+	commands.Handler(discord)
 
 	sc := make(chan os.Signal, 1)
 	signal.Notify(sc, syscall.SIGINT, syscall.SIGTERM, os.Interrupt, os.Kill)
 	<-sc
 
-	event.RemoveCommands(discord)
+	commands.Remove(discord)
 	discord.Close()
 }
