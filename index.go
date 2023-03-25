@@ -13,12 +13,14 @@ import (
 func main() {
 	discord, err := discordgo.New("Bot " + os.Args[1])
 	if err != nil {
-		println("erreur : ", err)
+		println("Can't connect to discord ")
+		return
 	}
 
 	err = discord.Open()
 	if err != nil {
-		println("erreur :", err)
+		println("Provided token can't be use")
+		return
 	}
 	event.Message(discord)
 	println("Bot started")
