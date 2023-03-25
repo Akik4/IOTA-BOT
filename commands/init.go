@@ -48,42 +48,46 @@ func init() {
 			var Opt []*discordgo.ApplicationCommandOption
 
 			for i := range V.Settings.Type {
-				var Gender discordgo.ApplicationCommandOptionType
+				var gender discordgo.ApplicationCommandOptionType
 				var req bool
 				t := V.Settings.Type[i]
-				if t == "user" {
-					Gender = discordgo.ApplicationCommandOptionUser
-				} else if t == "string" {
-					Gender = discordgo.ApplicationCommandOptionString
-				} else if t == "attachment" {
-					Gender = discordgo.ApplicationCommandOptionAttachment
-				} else if t == "boolean" {
-					Gender = discordgo.ApplicationCommandOptionBoolean
-				} else if t == "channel" {
-					Gender = discordgo.ApplicationCommandOptionChannel
-				} else if t == "int" {
-					Gender = discordgo.ApplicationCommandOptionInteger
-				} else if t == "mentionable" {
-					Gender = discordgo.ApplicationCommandOptionMentionable
-				} else if t == "number" {
-					Gender = discordgo.ApplicationCommandOptionNumber
-				} else if t == "role" {
-					Gender = discordgo.ApplicationCommandOptionRole
-				} else if t == "subcommand" {
-					Gender = discordgo.ApplicationCommandOptionSubCommand
-				} else if t == "subcommandgroup" {
-					Gender = discordgo.ApplicationCommandOptionSubCommandGroup
+
+				switch t {
+				case "user":
+					gender = discordgo.ApplicationCommandOptionUser
+				case "string":
+					gender = discordgo.ApplicationCommandOptionString
+				case "attachment":
+					gender = discordgo.ApplicationCommandOptionAttachment
+				case "boolean":
+					gender = discordgo.ApplicationCommandOptionBoolean
+				case "channel":
+					gender = discordgo.ApplicationCommandOptionChannel
+				case "int":
+					gender = discordgo.ApplicationCommandOptionInteger
+				case "mentionable":
+					gender = discordgo.ApplicationCommandOptionMentionable
+				case "number":
+					gender = discordgo.ApplicationCommandOptionNumber
+				case "role":
+					gender = discordgo.ApplicationCommandOptionRole
+				case "subcommand":
+					gender = discordgo.ApplicationCommandOptionSubCommand
+				case "subcommandgroup":
+					gender = discordgo.ApplicationCommandOptionSubCommandGroup
+
 				}
 
-				if V.Settings.Required[i] == "true" {
+				switch V.Settings.Required[i] {
+				case "true":
 					req = true
-				} else {
+				case "false":
 					req = false
 				}
 				Opt = append(Opt, &discordgo.ApplicationCommandOption{
 					Name:        V.Settings.Name[i],
 					Description: V.Settings.Description[i],
-					Type:        Gender,
+					Type:        gender,
 					Required:    req,
 				})
 

@@ -1,5 +1,5 @@
 name = "avatar"
-description = "Bernard tapis"
+description = "Show users avatar"
 [settings]
     load = true
     type = ["user"]
